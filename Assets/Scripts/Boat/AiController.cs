@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.AI;
@@ -133,6 +133,9 @@ namespace BoatAttack
 
         private void OnDrawGizmos()
         {
+            if (_pathPoint == null)
+                return;
+
             var c = Color.yellow;
             Gizmos.color = c;
 
