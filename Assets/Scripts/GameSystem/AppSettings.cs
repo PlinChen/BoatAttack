@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using GameplayIngredients;
 using UnityEngine;
@@ -180,11 +180,30 @@ namespace BoatAttack
 
         public static void LoadScene(string scenePath, LoadSceneMode mode = LoadSceneMode.Single)
         {
-            LoadScene(SceneUtility.GetBuildIndexByScenePath(scenePath), mode);
+            Debug.Log("Assets/Scripts/GameSystem/AppSettings.cs:183\n\tscenePath: " + scenePath);
+            LoadSceneByPath(scenePath, mode);
+        }
+
+        public static void LoadSceneByPath(string scenePath, LoadSceneMode mode)
+        {
+            Debug.Log("Assets/Scripts/GameSystem/AppSettings.cs:189\n\tscenePath: " + scenePath);
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
+            switch (mode)
+            {
+                case LoadSceneMode.Single:
+                    Instance.StartCoroutine(LoadSceneByPath(scenePath));
+                    break;
+                case LoadSceneMode.Additive:
+                    SceneManager.LoadSceneAsync(scenePath, LoadSceneMode.Additive);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(mode), mode, null);
+            }
         }
 
         public static void LoadScene(int buildIndex, LoadSceneMode mode)
         {
+            Debug.Log("Assets/Scripts/GameSystem/AppSettings.cs:206\n\tbuildIndex: " + buildIndex);
             Application.backgroundLoadingPriority = ThreadPriority.Low;
             switch (mode)
             {
@@ -199,7 +218,17 @@ namespace BoatAttack
             }
         }
 
-        private static IEnumerator LoadScene(int scene)
+        public static IEnumerator LoadSceneByPath(string scene)
+        {
+            var loadingScreenLoading = Instance.loadingScreen.InstantiateAsync();
+            yield return loadingScreenLoading;
+            Instance.loadingScreenObject = loadingScreenLoading.Result;
+            DontDestroyOnLoad(Instance.loadingScreenObject);
+            Debug.Log($"loading scene {scene} at build index {SceneUtility.GetBuildIndexByScenePath(scene)}");
+            SceneManager.LoadScene(scene);
+        }
+
+        public static IEnumerator LoadScene(int scene)
         {
             var loadingScreenLoading = Instance.loadingScreen.InstantiateAsync();
             yield return loadingScreenLoading;
