@@ -18,6 +18,22 @@
       },
       "url": "https://packages.unity.cn"
     },
+    "com.unity.autostreaming": {
+      "version": "0.1.0-preview.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.autostreaming.ccd": "0.1.0-preview.1"
+      },
+      "url": "https://packages.unity.cn"
+    },
+    "com.unity.autostreaming.ccd": {
+      "version": "0.1.0-preview.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.cn"
+    },
     "com.unity.build-report-inspector": {
       "version": "0.2.2-preview",
       "depth": 0,
