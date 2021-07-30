@@ -2,7 +2,7 @@
 
 ![Welcome](./Assets/Textures/UI/welcome-title.png)]
 
-此项目仅用于体验 Unity AutoStreaming功能，
+此工程仅用于体验 Unity AutoStreaming功能，
 仓库派生自 [Boat Attack](https://plastichub.unity.cn/unity-tech-cn/BoatAttack)。
 
 ## AutoStreaming支持版本
@@ -10,7 +10,7 @@
   2. 2020.3.16f1c1 及以上的LTS中国版， 参见 [Unity2020.3LTS中国版列表](https://unity.cn/releases/lts/2020)
 
 ## 使用教程:
-  1. 点击 `下载此仓库` -> `在UnityHub中打开` 或者复制仓库链接并使用Plastic客户端下载此项目；
+  1. 点击 `下载此仓库` -> `在UnityHub中打开` 或者复制仓库链接并使用Plastic客户端下载此工程；
   2. 使用 [支持AutoStreaming的Unity版本](#autostreaming支持版本) 打开工程；
   3. 打开Auto-Streaming页面，勾选"Use Auto-Streaming"选项以启用Auto Streaming功能；
   4. 在配置页面填入CCD配置信息；
@@ -27,7 +27,7 @@
   - **2020.3-autostreaming**: 开启了 AutoStreaming 的工程, 适用于 2020.3.16f1c1 及以上的 Unity2020.3LTS 中国版
 
 ## 直接体验
-- 您可以直接下载项目中的[BoatAttack.apk](./BoatAttack.apk)文件，安装并体验游戏。
+- 您可以直接下载工程中的[BoatAttack.apk](./BoatAttack.apk)文件，安装并体验游戏。
 - 不同分支中的apk由对应分支下的Build结果
 
 ## 更多参考
