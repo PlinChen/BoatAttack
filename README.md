@@ -1,6 +1,6 @@
 ## BoatAttack AutoStreaming
 
-![Welcome](./Assets/Textures/UI/welcome-title.png)]
+![Welcome](./Assets/Textures/UI/welcome-title.png)
 
 此工程仅用于体验 Unity AutoStreaming功能，
 仓库派生自 [Boat Attack](https://plastichub.unity.cn/unity-tech-cn/BoatAttack)。
