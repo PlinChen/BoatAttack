@@ -61,7 +61,7 @@ QualitySettings:
     skinWeights: 2
     textureQuality: 0
     anisotropicTextures: 1
-    antiAliasing: 0
+    antiAliasing: 2
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -101,7 +101,7 @@ QualitySettings:
     skinWeights: 2
     textureQuality: 0
     anisotropicTextures: 2
-    antiAliasing: 2
+    antiAliasing: 4
     softParticles: 1
     softVegetation: 1
     realtimeReflectionProbes: 1
@@ -128,16 +128,17 @@ QualitySettings:
     - WebGL
     - Nintendo Switch
   m_PerPlatformDefaultQuality:
-    Android: 0
+    Android: 1
     Nintendo 3DS: 0
     Nintendo Switch: 1
     PS4: 2
     PSP2: 0
+    Server: 0
     Standalone: 2
     Tizen: 0
     WebGL: 2
     WiiU: 0
     Windows Store Apps: 0
     XboxOne: 2
-    iPhone: 0
+    iPhone: 1
     tvOS: 0

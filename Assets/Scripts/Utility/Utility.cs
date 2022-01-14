@@ -4,8 +4,10 @@ using UnityEditor;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
+using Console = BoatAttack.Console;
 using Object = UnityEngine.Object;
 
 public static class Utility
@@ -13,6 +15,17 @@ public static class Utility
     public static event Action<int, int> QualityLevelChange;
     private static int lastQualityLevel = -1;
 
+    [Console.ConsoleCmd]
+    public static void SetRenderer(int index)
+    {
+        var cam = Camera.main;
+        if (cam)
+        {
+            var data = cam.GetUniversalAdditionalCameraData();
+            data.SetRenderer(index);
+        }
+    }
+    
     public static void CheckQualityLevel()
     {
         var curLevel = QualitySettings.GetQualityLevel();
@@ -23,6 +36,12 @@ public static class Utility
         var realIndex = GetTrueQualityLevel(curLevel);
         QualityLevelChange?.Invoke(curLevel, realIndex);
         lastQualityLevel = curLevel;
+    }
+
+    [Console.ConsoleCmd]
+    public static void SetQualityLevel(int level)
+    {
+        QualitySettings.SetQualityLevel(level);
     }
 
     public static int GetTrueQualityLevel()
@@ -77,6 +96,24 @@ public static class Utility
     }
 
     private static readonly List<string> QualityLevels = new List<string> {"Low", "Medium", "High"};
+
+    public static void StaticObjects()
+    {
+        // remove the noise on Cinemachine cameras
+        var cameras = GameObject.FindObjectsOfType<CinemachineVirtualCamera>();
+        foreach (var cam in cameras)
+        {
+            var comp = cam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+            if(comp)
+                comp.m_AmplitudeGain = 0.0f;
+        }
+        // make the cinemachine carts static
+        var carts = GameObject.FindObjectsOfType<CinemachineDollyCart>();
+        foreach (var cart in carts)
+        {
+            cart.m_Speed = 0.0f;
+        }
+    }
 }
 
 #if UNITY_EDITOR
